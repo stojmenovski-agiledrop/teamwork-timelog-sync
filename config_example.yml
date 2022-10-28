@@ -1,0 +1,12 @@
+# Copy this configuration with your real username and password to config.yml.
+source_account:
+  url: https://jobiqo.eu.teamwork.com
+  username: username@jobiqo.com
+  password: password
+destination_account:
+  url: https://agiledrop.teamwork.com
+  username: username@agiledrop.com
+  password: password
+  # Can be found in the URL when visiting your task list e.g. https://agiledrop.teamwork.com/#/tasklists/12345678,
+  # only needed for the destination account.
+  task_list_id: 12345678
