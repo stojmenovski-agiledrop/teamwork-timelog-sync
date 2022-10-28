@@ -113,5 +113,5 @@ for st in source_timelogs:
 # Print report
 if len(source_timelogs) == 0:
     print('[WARNING]: No timelogs in the source yet.')
-if logs_count > 0:
+if logs_count == 0:
     print('[INFO] All timelogs are up to date!')
