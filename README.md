@@ -29,6 +29,12 @@ Currently, the script will sync the timelogs for the same day by default. You ca
 ```commandline
 ./timelog_sync.py --yesterday
 ```
+
+You can also pass the --date argument in order to specify a specific date. Note the date should be in the YYYY-MM-DD format.
+```commandline
+./timelog_sync.py --date 2022-11-15
+```
+
 TODO: there will also be an option to specify a date range.
 
 ## Limitations

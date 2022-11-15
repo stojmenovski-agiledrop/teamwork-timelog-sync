@@ -29,13 +29,28 @@ def parse_config(config, name):
 today = datetime.today().strftime('%Y-%m-%d')
 yesterday = (datetime.today() - timedelta(1)).strftime('%Y-%m-%d')
 
-# TODO: also add a custom date range.
 from_date, to_date = today, today
+# Parse command line arguments
 if len(sys.argv) > 1:
     if sys.argv[1] == '--yesterday':
         from_date, to_date = yesterday, yesterday
+    elif sys.argv[1] == '--date' and len(sys.argv) > 2:
+        custom_date = sys.argv[2]
+        try:
+            datetime.strptime(custom_date, '%Y-%m-%d')
+        except ValueError:
+            raise ValueError('[ERROR] Incorrect data format, please enter the date in the YYYY-MM-DD format')
+        from_date, to_date = custom_date, custom_date
+    else:
+        print('[ERROR] Invalid arguments provided. Please check the documentation.')
+        exit()
 
-print('[INFO] Syncing timelogs from ' + from_date + ' to ' + to_date)
+if from_date != to_date:
+    message = '[INFO] Syncing timelogs from ' + from_date + ' to ' + to_date
+else:
+    message = '[INFO] Syncing timelogs for ' + from_date
+print(message)
+
 # Source
 source_name = list(source.keys())[0]
 source_url, source_user, source_pass, _ = parse_config(source, source_name)
